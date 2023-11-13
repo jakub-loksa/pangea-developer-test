@@ -3,7 +3,30 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PangeaDeveloperTest", "PangeaDeveloperTest.csproj", "{26BAEA33-9AF0-4110-9CFD-64CD360E5FDC}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "be-diffchecker", "be-diffchecker", "{0317CEC6-3B7F-47C4-B5E0-3671696BBF9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiffChecker.Api", "be-diffchecker\DiffChecker.Api\DiffChecker.Api.csproj", "{A042D63D-6860-46A3-855D-1E869E5BC87E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5D58CBFC-564F-44A7-BAFE-080B5BF6D831}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{9F596336-A2BD-46F3-A13A-E352CD9CF27A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiffChecker.Api.Tests", "be-diffchecker\tests\DiffChecker.Api.Tests\DiffChecker.Api.Tests.csproj", "{3CE26926-3D3F-4D7D-8F4F-5CDC038950F8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib-database", "lib-database", "{1ED0081B-702E-46F0-8C9B-18922277C7F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database.Contracts", "lib-database\Database.Contracts\Database.Contracts.csproj", "{31B27ED2-EBB4-42CB-9B97-277E870198B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiffChecker.Logic", "be-diffchecker\DiffChecker.Logic\DiffChecker.Logic.csproj", "{6EC920C5-99F8-4C47-BF9B-95E61C739705}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database.Logic", "lib-database\Database.Logic\Database.Logic.csproj", "{C4698843-D7ED-44EC-B396-826E89E3EA66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiffChecker.Contracts", "be-diffchecker\DiffChecker.Contracts\DiffChecker.Contracts.csproj", "{FD847D18-5461-49B2-B32F-E0686C200A34}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,13 +34,42 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{26BAEA33-9AF0-4110-9CFD-64CD360E5FDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{26BAEA33-9AF0-4110-9CFD-64CD360E5FDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{26BAEA33-9AF0-4110-9CFD-64CD360E5FDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{26BAEA33-9AF0-4110-9CFD-64CD360E5FDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A042D63D-6860-46A3-855D-1E869E5BC87E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A042D63D-6860-46A3-855D-1E869E5BC87E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A042D63D-6860-46A3-855D-1E869E5BC87E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A042D63D-6860-46A3-855D-1E869E5BC87E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CE26926-3D3F-4D7D-8F4F-5CDC038950F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CE26926-3D3F-4D7D-8F4F-5CDC038950F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CE26926-3D3F-4D7D-8F4F-5CDC038950F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CE26926-3D3F-4D7D-8F4F-5CDC038950F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31B27ED2-EBB4-42CB-9B97-277E870198B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31B27ED2-EBB4-42CB-9B97-277E870198B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31B27ED2-EBB4-42CB-9B97-277E870198B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31B27ED2-EBB4-42CB-9B97-277E870198B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EC920C5-99F8-4C47-BF9B-95E61C739705}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EC920C5-99F8-4C47-BF9B-95E61C739705}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EC920C5-99F8-4C47-BF9B-95E61C739705}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EC920C5-99F8-4C47-BF9B-95E61C739705}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4698843-D7ED-44EC-B396-826E89E3EA66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4698843-D7ED-44EC-B396-826E89E3EA66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4698843-D7ED-44EC-B396-826E89E3EA66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4698843-D7ED-44EC-B396-826E89E3EA66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD847D18-5461-49B2-B32F-E0686C200A34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD847D18-5461-49B2-B32F-E0686C200A34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD847D18-5461-49B2-B32F-E0686C200A34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD847D18-5461-49B2-B32F-E0686C200A34}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A042D63D-6860-46A3-855D-1E869E5BC87E} = {0317CEC6-3B7F-47C4-B5E0-3671696BBF9D}
+		{9F596336-A2BD-46F3-A13A-E352CD9CF27A} = {0317CEC6-3B7F-47C4-B5E0-3671696BBF9D}
+		{3CE26926-3D3F-4D7D-8F4F-5CDC038950F8} = {9F596336-A2BD-46F3-A13A-E352CD9CF27A}
+		{31B27ED2-EBB4-42CB-9B97-277E870198B7} = {1ED0081B-702E-46F0-8C9B-18922277C7F8}
+		{6EC920C5-99F8-4C47-BF9B-95E61C739705} = {0317CEC6-3B7F-47C4-B5E0-3671696BBF9D}
+		{C4698843-D7ED-44EC-B396-826E89E3EA66} = {1ED0081B-702E-46F0-8C9B-18922277C7F8}
+		{FD847D18-5461-49B2-B32F-E0686C200A34} = {0317CEC6-3B7F-47C4-B5E0-3671696BBF9D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B55001DB-600D-4DE3-8491-DCAEA3ADBF3B}
