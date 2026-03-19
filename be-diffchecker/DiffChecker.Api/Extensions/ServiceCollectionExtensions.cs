@@ -1,6 +1,5 @@
 ﻿using Database.Logic;
-using Database.Logic.Profiles;
-using DiffChecker.Api.Profiles;
+using DiffChecker.Api.Mappers;
 using DiffChecker.Contracts.Services.V1;
 using DiffChecker.Logic.Services.V1;
 using System.Reflection;
@@ -14,10 +13,7 @@ namespace DiffChecker.Api.Extensions
         /// </summary>
         public static IServiceCollection AddProgramServices(this IServiceCollection services)
         {
-            if (services is null)
-            {
-                throw new ArgumentNullException(nameof(services));
-            }
+            ArgumentNullException.ThrowIfNull(services);
 
             services.AddControllers();
             services.AddApiVersioning();
@@ -33,9 +29,7 @@ namespace DiffChecker.Api.Extensions
 
             services.AddScoped<IDiffService, DiffService>();
 
-            services.AddAutoMapper(
-                typeof(DatabaseProfile),
-                typeof(ApiProfile));
+            services.AddSingleton<ApiMapper>();
 
             return services;
         }

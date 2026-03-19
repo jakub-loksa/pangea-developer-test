@@ -1,4 +1,5 @@
 ﻿using Database.Contracts.Stores;
+using Database.Logic.Mappers;
 using Database.Logic.Stores;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,10 +11,7 @@ namespace Database.Logic
         public static IServiceCollection ConfigureDatabaseContext(
             this IServiceCollection services)
         {
-            if (services is null)
-            {
-                throw new ArgumentNullException(nameof(services));
-            }
+            ArgumentNullException.ThrowIfNull(services);
 
             // TODO: When moving to PROD, it is essential to replace this with a regular
             // database provider, e.g. Microsoft.EntityFrameworkCore.SqlServer,
@@ -21,6 +19,7 @@ namespace Database.Logic
             services.AddDbContext<DatabaseContext>(config =>
                  config.UseInMemoryDatabase(nameof(DatabaseContext)));
 
+            services.AddSingleton<DiffMapper>();
             services.AddScoped<IDiffStore, DiffStore>();
 
             return services;

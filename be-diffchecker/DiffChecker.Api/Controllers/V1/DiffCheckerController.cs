@@ -1,7 +1,6 @@
 ﻿using Asp.Versioning;
-using AutoMapper;
+using DiffChecker.Api.Mappers;
 using DiffChecker.Api.Requests.V1.DiffChecker;
-using DiffChecker.Api.Responses.V1.DiffChecker;
 using DiffChecker.Contracts.Services.V1;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
@@ -17,18 +16,10 @@ namespace DiffChecker.Api.Controllers.V1
     [Route("api/v1/diff")]
     [ApiController]
     [Produces(MediaTypeNames.Application.Json)]
-    public class DiffCheckerController : ControllerBase
+    public class DiffCheckerController(
+        IDiffService service,
+        ApiMapper mapper) : ControllerBase
     {
-        private readonly IDiffService _service;
-        private readonly IMapper _mapper;
-
-        public DiffCheckerController(
-            IDiffService service,
-            IMapper mapper)
-        {
-            _service = service;
-            _mapper = mapper;
-        }
 
         /// <summary>
         /// Saves left side of the diff.
@@ -40,7 +31,7 @@ namespace DiffChecker.Api.Controllers.V1
             [FromRoute(Name = "id")] string id,
             CancellationToken cancellationToken)
         {
-            return await ProcessRequest(input => _service.SaveLeftDiff(id, input, cancellationToken));
+            return await ProcessRequest(input => service.SaveLeftDiff(id, input, cancellationToken));
         }
 
         /// <summary>
@@ -53,7 +44,7 @@ namespace DiffChecker.Api.Controllers.V1
             [FromRoute(Name = "id")] string id,
             CancellationToken cancellationToken)
         {
-            return await ProcessRequest(input => _service.SaveRightDiff(id, input, cancellationToken));
+            return await ProcessRequest(input => service.SaveRightDiff(id, input, cancellationToken));
         }
 
         /// <summary>
@@ -65,9 +56,9 @@ namespace DiffChecker.Api.Controllers.V1
             [FromRoute(Name = "id")] string id,
             CancellationToken cancellationToken)
         {
-            var result = await _service.CalculateDiff(id, cancellationToken);
+            var result = await service.CalculateDiff(id, cancellationToken);
 
-            var response = _mapper.Map<DiffProcessingResponse>(result);
+            var response = mapper.ToResponse(result);
 
             return Ok(response);
         }
