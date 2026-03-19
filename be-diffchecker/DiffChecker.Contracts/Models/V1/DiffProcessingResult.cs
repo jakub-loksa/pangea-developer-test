@@ -4,13 +4,6 @@ namespace DiffChecker.Contracts.Models.V1
 {
     public class DiffProcessingResult
     {
-        /// <summary>
-        /// Required empty constructor for Automappter
-        /// </summary>
-        public DiffProcessingResult()
-        {
-        }
-
         public DiffProcessingResult(bool isSuccessful, string message)
         {
             IsSuccessful = isSuccessful;
@@ -28,6 +21,6 @@ namespace DiffChecker.Contracts.Models.V1
 
         public string Message { get; set; } = null!;
 
-        public IEnumerable<DiffSectionResult> DiffSections { get; set; }
+        public IEnumerable<DiffSectionResult>? DiffSections { get; set; } = null;
     }
 }

@@ -5,19 +5,12 @@ using DiffChecker.Logic.Algorithms;
 
 namespace DiffChecker.Logic.Services.V1
 {
-    public class DiffService : IDiffService
+    public class DiffService(
+        IDiffStore store) : IDiffService
     {
-        private readonly IDiffStore _store;
-
-        public DiffService(
-            IDiffStore store)
-        {
-            _store = store;
-        }
-
         public async Task<DiffProcessingResult> CalculateDiff(string id, CancellationToken cancellationToken)
         {
-            var diff = await _store.TryGetDiff(id, cancellationToken);
+            var diff = await store.TryGetDiff(id, cancellationToken);
 
             if (diff is null)
             {
@@ -49,7 +42,7 @@ namespace DiffChecker.Logic.Services.V1
 
         public async Task SaveLeftDiff(string id, string input, CancellationToken cancellationToken)
         {
-            await _store.UpsertDiff(id,
+            await store.UpsertDiff(id,
                 leftInput: input,
                 rightInput: null,
                 cancellationToken);
@@ -57,7 +50,7 @@ namespace DiffChecker.Logic.Services.V1
 
         public async Task SaveRightDiff(string id, string input, CancellationToken cancellationToken)
         {
-            await _store.UpsertDiff(id,
+            await store.UpsertDiff(id,
                 leftInput: null,
                 rightInput: input,
                 cancellationToken);

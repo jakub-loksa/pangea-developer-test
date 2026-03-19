@@ -18,6 +18,6 @@
         /// <summary>
         /// List of individual diff sections between left and right side.
         /// </summary>
-        public IEnumerable<DiffSectionResponse>? DiffSections { get; set; }
+        public IEnumerable<DiffSectionResponse>? DiffSections { get; set; } = null;
     }
 }

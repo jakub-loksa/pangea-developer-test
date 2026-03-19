@@ -3,17 +3,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Database.Logic
 {
-    public class DatabaseContext : DbContext
+    /// <summary>
+    /// Required empty constructor for IoC.
+    /// </summary>
+    public class DatabaseContext(DbContextOptions<DatabaseContext> options) : DbContext(options)
     {
         public const string DiffSchema = "Diff";
-
-        /// <summary>
-        /// Required empty constructor for IoC.
-        /// </summary>
-        public DatabaseContext(DbContextOptions<DatabaseContext> options)
-            : base(options)
-        {
-        }
 
         public virtual DbSet<DiffEntity> Diffs { get; set; }
 

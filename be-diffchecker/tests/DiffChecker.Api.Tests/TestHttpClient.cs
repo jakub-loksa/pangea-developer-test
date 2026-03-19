@@ -4,14 +4,9 @@ using System.Net;
 
 namespace DiffChecker.Api.Tests
 {
-    public sealed class TestHttpClient
+    public sealed class TestHttpClient(HttpClient httpClient)
     {
-        private readonly HttpClient _httpClient;
-
-        public TestHttpClient(HttpClient httpClient)
-        {
-            _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
-        }
+        private readonly HttpClient _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
 
         public async Task<T> Get<T>(string requestUri, HttpStatusCode expectedStatusCode)
         {
